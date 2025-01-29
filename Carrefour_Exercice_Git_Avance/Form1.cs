@@ -5,6 +5,7 @@ namespace Carrefour_Exercice_Git_Avance
         public string Couleur = "Rouge";
         public int AnneeConstruction = 2024;
         public int Vitesse = 0;
+        public int litreEssence = 40;
         public Form1()
         {
             InitializeComponent();
@@ -12,7 +13,11 @@ namespace Carrefour_Exercice_Git_Avance
 
         public void Accelerer()
         {
-            Vitesse += 2;
+            if (litreEssence > 0)
+            {
+                Vitesse += 1;
+                litreEssence -= 1;
+            }
         }
 
         public void Freiner()
@@ -21,19 +26,30 @@ namespace Carrefour_Exercice_Git_Avance
             {
                 Vitesse -= 2;
             } 
+            if (Vitesse < 0)
+            {
+                Vitesse -= 2;
+            }
         }
 
         public void Reculer()
         {
-            if (Vitesse <= 0)
+            if (Vitesse <= 0 && litreEssence > 0)
             {
                 Vitesse -= 1;
+                litreEssence -= 1;
             }
+        }
+
+        public void RemplirEssence(int litre)
+        {
+            litreEssence += litre;
+            litreEssence = Math.Min(40, litreEssence);
         }
 
         private void button_afficherVitesse_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Votre vitesse est : " + Vitesse.ToString());
+            MessageBox.Show( Vitesse.ToString() + "Km/h ");
         }
 
         private void button_freiner_Click(object sender, EventArgs e)
