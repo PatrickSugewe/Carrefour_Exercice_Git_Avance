@@ -12,10 +12,11 @@ namespace Carrefour_Exercice_Git_Avance
         }
 
         public void Accelerer()
+           
         {
             if (litreEssence > 0)
             {
-                Vitesse += 1;
+                Vitesse += 2;
                 litreEssence -= 1;
             }
         }
